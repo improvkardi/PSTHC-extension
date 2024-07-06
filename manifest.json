@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Trophée Checker",
+  "version": "1.0",
+  "description": "Ajoute une coche aux liens de trophées obtenus.",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.psthc.fr/*guide-trophees*"],
+      "js": ["content.js"]
+    }
+  ]
+}
