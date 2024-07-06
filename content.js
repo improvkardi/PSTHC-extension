@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Ajouter dynamiquement le style pour le tooltip
+document.addEventListener("DOMContentLoaded", function() {    
     const style = document.createElement('style');
     style.textContent = `
         .tooltip {
@@ -31,19 +30,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const icon = document.createElement('span');
 
-            if (targetElement.getAttribute('obtained') === '1') {
+            /* if (targetElement.getAttribute('obtained') === '1') {
                 icon.textContent = '✔️';
                 icon.style.color = 'green';
             } else {
                 icon.textContent = '⚪';
+            } */
+            if (targetElement.getAttribute('obtained') === '1') {
+                link.style.textDecoration = 'line-through'
+                link.style.color = 'green';
             }
 
             icon.style.marginLeft = '5px';
-            icon.classList.add('tooltip-icon');
+            link.classList.add('tooltip-icon');
             
-            icon.setAttribute('title', descriptionText);
+            link.setAttribute('title', descriptionText);
 
-            link.appendChild(icon);
+            //link.appendChild(icon);
         }
     });
     
