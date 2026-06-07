@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Trophée Checker",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Barre les liens de trophées obtenus et affiche la description du trophée au survol du lien",
   "permissions": [
     "activeTab"

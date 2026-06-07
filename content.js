@@ -27,26 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
         if (targetElement) {
             const descriptionElement = targetElement.querySelector('.guide_trophy_description');
             const descriptionText = descriptionElement ? descriptionElement.textContent : 'Description non trouvée';
-
             const icon = document.createElement('span');
 
-            /* if (targetElement.getAttribute('obtained') === '1') {
-                icon.textContent = '✔️';
-                icon.style.color = 'green';
-            } else {
-                icon.textContent = '⚪';
-            } */
             if (targetElement.getAttribute('obtained') === '1') {
                 link.style.textDecoration = 'line-through'
                 link.style.color = 'green';
             }
-
-            icon.style.marginLeft = '5px';
-            link.classList.add('tooltip-icon');
             
             link.setAttribute('title', descriptionText);
-
-            //link.appendChild(icon);
         }
     });
     
