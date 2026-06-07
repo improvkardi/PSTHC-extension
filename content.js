@@ -1,45 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {    
-    const style = document.createElement('style');
-    style.textContent = `
-        .tooltip {
-            position: absolute;
-            background-color: black;
-            color: white;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 12px;
-            display: none;
-            z-index: 1000;
-            white-space: nowrap;
-        }
-        .tooltip-icon:hover {
-            cursor: pointer;
-        }
-    `;
-    document.head.appendChild(style);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        const target = document.getElementById(link.hash.slice(1));
 
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            const descriptionElement = targetElement.querySelector('.guide_trophy_description');
-            const descriptionText = descriptionElement ? descriptionElement.textContent : 'Description non trouvée';
-            const icon = document.createElement('span');
+        if (!target) return;
 
-            if (targetElement.getAttribute('obtained') === '1') {
-                link.style.textDecoration = 'line-through'
-                link.style.color = 'green';
-            }
-            
-            link.setAttribute('title', descriptionText);
+        const description =
+            target.querySelector('.guide_trophy_description')?.textContent ||
+            'Description non trouvée';
+
+        if (target.getAttribute('obtained') === '1') {
+            link.style.textDecoration = 'line-through';
+            link.style.color = 'green';
         }
+
+        link.title = description;
     });
-    
-    // Création du tooltip
-    const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
-    document.body.appendChild(tooltip);
 });
